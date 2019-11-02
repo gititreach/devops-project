@@ -1,0 +1,18 @@
+# set java
+JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+
+export M2_HOME=/home/rajesh/devops/apache-maven-3.6.2
+
+export M2=$M2_HOME/bin
+
+PATH=$PATH:/usr/lib/jvm/java-8-openjdk-amd64/bin:$M2
+
+export JAVA_HOME PATH
+
+#git branch in prompt.
+parse_git_branch() {
+	git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
+
+#prompt settings
+export PS1="\u@\h \w\[\033[34m\]\$(parse_git_branch)\[\033[00m\]$"
